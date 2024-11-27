@@ -1,4 +1,6 @@
-﻿namespace WAD.Codebase._00016656.Services.Interfaces
+﻿using WAD.Codebase._00016656.Models;
+
+namespace WAD.Codebase._00016656.Services.Interfaces
 {
     public interface IPropertyRepository : IRepository<Property>
     {
