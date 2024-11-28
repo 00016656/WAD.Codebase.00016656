@@ -56,7 +56,7 @@ namespace WAD.Codebase._00016656.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateProperty(int id, PropertyDTO propertyDTO)
+        public async Task<ActionResult> UpdateProperty(int id, PropertyEditDTO propertyDTO)
         {
             if (id != propertyDTO.Id) return BadRequest("Property ID mismatch");
 

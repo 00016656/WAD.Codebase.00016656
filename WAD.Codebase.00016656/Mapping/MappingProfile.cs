@@ -1,26 +1,28 @@
-﻿namespace WAD.Codebase._00016656.Mapping
-{
-    using AutoMapper;
-    using WAD.Codebase._00016656.Dtos;
-    using WAD.Codebase._00016656.Models;
+﻿using AutoMapper;
+using WAD.Codebase._00016656.Dtos;
+using WAD.Codebase._00016656.Models;
 
+namespace WAD.Codebase._00016656.Mapping
+{
     public class MappingProfile : Profile
     {
         public MappingProfile()
         {
             // User Mapping
-            CreateMap<User, UserDTO>();
+            CreateMap<User, UserDTO>().ReverseMap();
 
             // Property Mapping
             CreateMap<Property, PropertyDTO>()
-                .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.FullName));
+                .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.FullName))
+                .ReverseMap();
+
+            CreateMap<Property, PropertyEditDTO>().ReverseMap();
 
             // CreatePropertyDTO to Property Mapping
             CreateMap<CreatePropertyDTO, Property>();
 
-            CreateMap<CreateUserDTO, User>()
-                .ForMember(dest => dest.PasswordHash, opt => opt.Ignore()); // Hashing will be handled separately
+            // CreateUserDTO to User Mapping
+            CreateMap<CreateUserDTO, User>();
         }
     }
-
 }
